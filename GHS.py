@@ -1,19 +1,6 @@
 import time
 import random
 
-# Define ASCII art icons for each agency
-AGENCY_ICONS = {
-    'FBI': "   __ _ _ __ __ _ _ __ ___   __ _\n  / _` | '__/ _` | '_ ` _ \\ / _` |\n | (_| | | | (_| | | | | | | (_| |\n  \\__, |_|  \\__,_|_| |_| |_|\\__,_|\n  |___/",
-    'CIA': "   ___ _ __ ___  __ _  __ _  ___ _ __ ___   __ _\n  / _ \\ '_ ` _ \\/ _` |/ _` |/ _ \\ '_ ` _ \\ / _` |\n |  __/ | | | | | (_| | (_| |  __/ | | | | | (_| |\n  \\___|_| |_| |_|\\__,_|\\__, |\\___|_| |_| |_|\\__,_|\n                       |___/",
-    'NSA': "    __ _  __ _ _ __ __ _\n   / _` |/ _` | '__/ _` |\n  | (_| | (_| | | | (_| |\n   \\__, |\\__, |_|  \\__,_|\n      |___/   ",
-    'DHS': "   _    _ _           _\n  / \\  | (_) ___  ___| |_ ___ _ __ ___  ___\n / _ \\ | | |/ _ \\/ __| __/ _ \\ '__/ __|/ _ \\\n/ ___ \\| | |  __/ (__| ||  __/ |  \\__ \\  __/\n/_/   \\_\\_|_|\\___|\\___|\\__\\___|_|  |___/\\___|",
-    'MI6': "   __  __ _ _ _ __ __ _\n  |  \\/  (_) | '__/ _` |\n  | |\\/| | | | | (_| |\n  |_|  |_|_|_|  \\__,_|\n                     ",
-    'GCHQ': "   _____ _           _\n  / ____(_)         | |\n | |     _ _ __ ___ | |__   __ _\n | |    | | '_ ` _ \\| '_ \\ / _` |\n | |____| | | | | | | | | | (_| |\n  \\_____|_|_| |_| |_|_| |_|\\__,_|\n",
-    'MSS': "   ____  _           _\n  / ___|| |__   __ _| |_\n  \\___ \\| '_ \\ / _` | __|\n   ___) | | | | (_| | |_\n  |____/|_| |_|\\__,_|\\__|\n",
-    'FSB': "   _____           _\n  |  __ \\         | |\n  | |__) |___  ___| | _____ _ __\n  |  _  // _ \\/ __| |/ / _ \\ '__|\n  | | \\ \\  __/ (__|   <  __/ |\n  |_|  \\_\\___|\\___|_|\\_\\___|_|",
-    'RAW': "   ____            _\n  |  _ \\ _ __ ___ (_) __ _ _ __\n  | | | | '__/ _ \\| |/ _` | '_ \\\n  | |_| | | | (_) | | (_| | | | |\n  |____/|_|  \\___/|_|\\__, |_| |_|\n                     |___/",
-}
-
 # Define the fake documents for each agency
 FAKE_DOCUMENTS = {
     'FBI': [
@@ -134,48 +121,56 @@ FAKE_DOCUMENTS = {
     ]
 }
 
+
 def print_slow(text, delay=0.03):
     for char in text:
         print(char, end='', flush=True)
         time.sleep(delay)
     print()
 
-def display_case_file(documents, agency_name, agency_icon='\033[91m'):
-    print_slow(f"\n{agency_icon}{AGENCY_ICONS[agency_name]}\033[0m")
-    print_slow("\033[91m-------------------------------------------------------------------\033[0m")
-    print_slow(f"\033[91mAgency: {agency_name}\033[0m")
-    print_slow("\033[91m-------------------------------------------------------------------\033[0m")
+def display_case_file(agency_name, documents):
+    print_slow(f"\n\033[91m███╗   ███╗ █████╗ ███████╗███████╗    ███████╗███████╗ ██████╗ ██████╗ \033[0m")
+    print_slow(f"\033[91m████╗ ████║██╔══██╗██╔════╝██╔════╝    ██╔════╝██╔════╝██╔═══██╗██╔══██╗\033[0m")
+    print_slow(f"\033[91m██╔████╔██║███████║███████╗███████╗    ███████╗███████╗██║   ██║██████╔╝\033[0m")
+    print_slow(f"\033[91m██║╚██╔╝██║██╔══██║╚════██║╚════██║    ╚════██║╚════██║██║   ██║██╔══██╗\033[0m")
+    print_slow(f"\033[91m██║ ╚═╝ ██║██║  ██║███████║███████║    ███████║███████║╚██████╔╝██║  ██║\033[0m")
+    print_slow(f"\033[91m╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝    ╚══════╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝\033[0m")
+    print_slow(f"\033[91m                             Government Hacking Simulator (GHS)\033[0m\n")
 
-    for i, document in enumerate(documents):
-        progress = f"{i + 1}0%"
-        print_slow(f"\033[91mDocument {i + 1}:\033[0m {document} - {progress}", delay=0.02)
+    for document in documents:
+        print_slow(f"\033[91m{document}\033[0m", delay=0.02)
 
-    print_slow("\033[92mDocument extraction complete.\n\033[0m")
+    print_slow(f"\n\033[91mDocument extraction complete for {agency_name}.\n\033[0m")
     time.sleep(1)
 
 def hack_agency(agency_name):
-    print_slow(f"\n\033[92mInitiating connection to {agency_name}...\033[0m")
+    print_slow(f"\n\033[91mInitiating connection to {agency_name}...\033[0m")
     time.sleep(1)
-    print_slow(f"\033[92mAccessing secure servers of {agency_name}...\033[0m")
-    for i in range(101):
-        time.sleep(0.1)
-        print_slow(f"\033[92mHacking {agency_name} databases... {i}%\033[0m", delay=0.01)
+    print_slow(f"\033[91mAccessing secure servers of {agency_name}...\033[0m")
+    
+    for i in range(11):
+        progress = i * 10
+        time.sleep(random.uniform(0.2, 0.5))
+        print_slow(f"\033[92mHacking {agency_name} databases... {progress}%\033[0m", delay=0.02)
 
     time.sleep(1)
-    print_slow(f"\n\033[92mAccess granted. Retrieving confidential documents from {agency_name}...\n\033[0m")
+    print_slow(f"\n\033[96mAccess granted. Retrieving confidential documents from {agency_name}...\n\033[0m")
     time.sleep(2)
-    display_case_file(FAKE_DOCUMENTS[agency_name], agency_name, '\033[92m')
+    display_case_file(agency_name, FAKE_DOCUMENTS[agency_name])
 
 def main():
     agencies = ['FBI', 'CIA', 'NSA', 'DHS', 'MI6', 'GCHQ', 'MSS', 'FSB', 'RAW']
 
-    print_slow("\033[95mWelcome to the \033[92mGovernment Hacking Simulator (GHS)\033[0m\n")
+    print_slow(f"\033[95m{'*' * 50}\033[0m")
+    print_slow(f"\033[95m{'Welcome to the Government Hacking Simulator!':^50}\033[0m")
+    print_slow(f"\033[95m{'*' * 50}\033[0m\n")
+
     while agencies:
         agency = random.choice(agencies)
         agencies.remove(agency)
         hack_agency(agency)
 
-    print_slow("\033[92mStay put, authorities are on their way!\033[0m")
+    print_slow("\033[91mStay put, authorities are on their way!\033[0m")
     time.sleep(30)
     print_slow("\033[95mThis is just a simulation and is not real.\033[0m")
 
