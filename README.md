@@ -8,7 +8,7 @@ Welcome to the Government Hacking Simulator! This is a Python script that simula
 2. Clone this repository to your local machine.
 
 ```bash
-git clone https://github.com/your-username/government-hacking-simulator.git
+git clone https://github.com/ChickenWithACrown/government-hacking-simulator.git
 ```
 
 3. Navigate to the project directory.
