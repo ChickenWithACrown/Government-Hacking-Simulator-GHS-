@@ -1,6 +1,5 @@
 import time
 import random
-
 # Define the fake documents for each agency
 FAKE_DOCUMENTS = {
     'FBI': [
